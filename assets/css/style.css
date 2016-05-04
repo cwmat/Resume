@@ -284,6 +284,38 @@ ul.list-check li::before {
     margin-right: 10px;
 }
 
+ul.list-file {
+
+}
+
+ul.list-file li{
+    position: relative;
+    font-size: 18px;
+    line-height: 32px;
+}
+ul.list-file li::before {
+    content: "\f15b";
+    font-family: fontawesome;
+    color: #68c3a3;
+    margin-right: 10px;
+}
+
+ul.list-skill {
+
+}
+
+ul.list-skill li{
+    position: relative;
+    font-size: 18px;
+    line-height: 32px;
+}
+ul.list-skill li::before {
+    content: "\f1c0";
+    font-family: fontawesome;
+    color: #68c3a3;
+    margin-right: 10px;
+}
+
 
 /* === MAIN === */
 .section-padding {
