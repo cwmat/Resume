@@ -29,7 +29,7 @@ jQuery(function ($) {
      * Preloader
     /* ---------------------------------------------- */
 
-    $(window).ready(function() {
+    $(window).ready(function () {
         $('#pre-status').fadeOut();
         $('#tt-preloader').delay(350).fadeOut('slow');
     });
@@ -42,7 +42,7 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        $('a[href*=#]').bind("click", function(e){
+        $('a[href*=#]').bind("click", function (e) {
             var anchor = $(this);
             $('html, body').stop().animate({
                 scrollTop: $(anchor.attr('href')).offset().top
@@ -59,7 +59,7 @@ jQuery(function ($) {
     (function () {
         $(".tt-fullHeight").height($(window).height());
 
-        $(window).resize(function(){
+        $(window).resize(function () {
             $(".tt-fullHeight").height($(window).height());
         });
 
@@ -89,7 +89,7 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
                 $('.scroll-up').fadeIn();
             } else {
@@ -102,11 +102,15 @@ jQuery(function ($) {
     // -------------------------------------------------------------
     // Countup
     // -------------------------------------------------------------
-    $('.count-wrap').bind('inview', function(event, visible, visiblePartX, visiblePartY) {
+    $('.count-wrap').bind('inview', function (event, visible, visiblePartX, visiblePartY) {
         if (visible) {
             $(this).find('.timer').each(function () {
                 var $this = $(this);
-                $({ Counter: 0 }).animate({ Counter: $this.text() }, {
+                $({
+                    Counter: 0
+                }).animate({
+                    Counter: $this.text()
+                }, {
                     duration: 2000,
                     easing: 'swing',
                     step: function () {
@@ -123,10 +127,10 @@ jQuery(function ($) {
     // Progress Bar
     // -------------------------------------------------------------
 
-    $('.skill-progress').bind('inview', function(event, visible, visiblePartX, visiblePartY) {
+    $('.skill-progress').bind('inview', function (event, visible, visiblePartX, visiblePartY) {
         if (visible) {
-            $.each($('div.progress-bar'),function(){
-                $(this).css('width', $(this).attr('aria-valuenow')+'%');
+            $.each($('div.progress-bar'), function () {
+                $(this).css('width', $(this).attr('aria-valuenow') + '%');
             });
             $(this).unbind('inview');
         }
@@ -135,19 +139,19 @@ jQuery(function ($) {
     // -------------------------------------------------------------
     // More skill
     // -------------------------------------------------------------
-    $('.more-skill').bind('inview', function(event, visible, visiblePartX, visiblePartY) {
+    $('.more-skill').bind('inview', function (event, visible, visiblePartX, visiblePartY) {
         if (visible) {
             $('.chart').easyPieChart({
                 //your configuration goes here
                 easing: 'easeOut',
                 delay: 3000,
-                barColor:'#68c3a3',
-                trackColor:'rgba(255,255,255,0.2)',
+                barColor: '#68c3a3',
+                trackColor: 'rgba(255,255,255,0.2)',
                 scaleColor: false,
                 lineWidth: 8,
                 size: 140,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     this.el.children[0].innerHTML = Math.round(percent);
                 }
 
@@ -181,7 +185,7 @@ jQuery(function ($) {
             var groupName = $(this).attr('data-group');
 
             // reshuffle grid
-            $grid.shuffle('shuffle', groupName );
+            $grid.shuffle('shuffle', groupName);
         });
 
 
@@ -193,15 +197,15 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-      $('.image-link').magnificPopup({
+        $('.image-link').magnificPopup({
 
-        gallery: {
-          enabled: true
-        },
-        removalDelay: 300, // Delay in milliseconds before popup is removed
-        mainClass: 'mfp-with-zoom', // this class is for CSS animation below
-        type:'image'
-      });
+            gallery: {
+                enabled: true
+            },
+            removalDelay: 300, // Delay in milliseconds before popup is removed
+            mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+            type: 'image'
+        });
 
     }());
 
@@ -236,18 +240,18 @@ jQuery(function ($) {
     // -------------------------------------------------------------
     (function () {
 
-    /* Vimeo API: http://developer.vimeo.com/player/js-api */
+        /* Vimeo API: http://developer.vimeo.com/player/js-api */
 
         var iframe = document.getElementById('nofocusvideo');
         // $f == Froogaloop
         var player = $f(iframe);
 
         $('.modal').on('hidden.bs.modal', function () {
-        player.api('pause');
+            player.api('pause');
         })
 
         $('.modal').on('shown.bs.modal', function () {
-        player.api('play');
+            player.api('play');
         })
     }());
 
@@ -258,11 +262,11 @@ jQuery(function ($) {
     // STELLAR FOR BACKGROUND SCROLLING
     // -------------------------------------------------------------
 
-    $(window).load(function() {
+    $(window).load(function () {
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 
-        }else {
+        } else {
             $.stellar({
                 horizontalScrolling: false,
                 responsive: true
@@ -280,7 +284,7 @@ jQuery(function ($) {
 
         new WOW({
 
-            mobile:  false
+            mobile: false
 
         }).init();
 
@@ -292,7 +296,7 @@ jQuery(function ($) {
     // Contact Form
     // -------------------------------------------------------------
 
-    $('#contactForm').on('submit',function(e){
+    $('#contactForm').on('submit', function (e) {
 
         e.preventDefault();
 
@@ -302,16 +306,16 @@ jQuery(function ($) {
 
         $this.prevAll('.alert').remove();
 
-        $.post( $action, $data, function( data ) {
+        $.post($action, $data, function (data) {
 
-            if( data.response=='error' ){
+            if (data.response == 'error') {
 
-                $this.before( '<div class="alert alert-danger">'+data.message+'</div>' );
+                $this.before('<div class="alert alert-danger">' + data.message + '</div>');
             }
 
-            if( data.response=='success' ){
+            if (data.response == 'success') {
 
-                $this.before( '<div class="alert alert-success">'+data.message+'</div>' );
+                $this.before('<div class="alert alert-success">' + data.message + '</div>');
                 $this.find('input, textarea').val('');
             }
 
@@ -327,67 +331,68 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        var myLatlng = new google.maps.LatLng(37.551255, -77.469206);
+        var myLatlng = new google.maps.LatLng(37.537755, -77.441674);
 
-            var styles = [
+        var styles = [{
+            featureType: "landscape",
+            stylers: [{
+                color: '#f7f7f7'
+            }]
+        }, {
+            featureType: "natural",
+            stylers: [{
+                hue: '#00ffe6'
+            }]
+        }, {
+            featureType: "road",
+            stylers: [{
+                    hue: '#fff'
+                },
                 {
-                    featureType: "landscape",
-                    stylers: [
-                        { color: '#f7f7f7' }
-                    ]
-                },{
-                    featureType: "natural",
-                    stylers: [
-                        { hue: '#00ffe6' }
-                    ]
-                },{
-                    featureType: "road",
-                    stylers: [
-                        { hue: '#fff' },
-                        { saturation: -70 }
-                    ]
-                },{
-                    featureType: "building",
-                    elementType: "labels",
-                    stylers: [
-                        { hue: '' }
-                    ]
-                },{
-                    featureType: "poi", //points of interest
-                    stylers: [
-                        { hue: '' }
-                    ]
+                    saturation: -70
                 }
-            ];
+            ]
+        }, {
+            featureType: "building",
+            elementType: "labels",
+            stylers: [{
+                hue: ''
+            }]
+        }, {
+            featureType: "poi", //points of interest
+            stylers: [{
+                hue: ''
+            }]
+        }];
 
-            var mapOptions = {
-                zoom: 12,
-                scrollwheel: false,
-                center: myLatlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                disableDefaultUI: true,
-                styles: styles
-            }
-            var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
+        var mapOptions = {
+            zoom: 12,
+            scrollwheel: false,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true,
+            styles: styles
+        }
+        var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
 
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                title: 'Hello World!'
-            });
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: 'Hello World!'
+        });
 
-            var contentString = '' +
-                    '' +
-                    '';
+        var contentString = '' +
+            '' +
+            '';
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
 
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
 
     }());
 
